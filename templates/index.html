@@ -6,30 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DRRP // National Relief Operations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DRRP // National Relief Operations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <div class="grain"></div>
-
-  <main class="command-shell" id="commandShell">
-    <header class="topbar glass">
-      <div class="brand">
-        <span class="brand-mark"><i></i><i></i><i></i></span>
-        <div><b>DRRP</b><small>NATIONAL RELIEF OPERATIONS GRID</small></div>
-      </div>
-      <div class="mission-meta">
-        <span class="signal"><i></i> LIVE COMMAND LINK</span>
-        <span>OPERATION <b>VARUNA SHIELD</b></span>
-        <span class="mission-clock" id="missionClock">06:42:18</span>
 <body>
   <div class="grain"></div>
 
@@ -77,43 +57,12 @@
           <radialGradient id="hazard"><stop stop-color="#9f492f" stop-opacity=".5"/><stop offset="1" stop-color="#7d291e" stop-opacity=".04"/></radialGradient>
         </defs>
         <g id="mapViewport">
-        <defs>
-          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M80 0H0V80" class="grid-line"/>
-          </pattern>
-          <pattern id="microGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M20 0H0V20" class="micro-line"/>
-          </pattern>
-          <filter id="glow"><feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          <filter id="hazardBlur"><feGaussianBlur stdDeviation="18"/></filter>
-          <linearGradient id="terrain" x1="0" x2="1" y1="0" y2="1">
-            <stop stop-color="#0e1c21"/><stop offset=".48" stop-color="#091419"/><stop offset="1" stop-color="#11191a"/>
-          </linearGradient>
-          <linearGradient id="river" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="#1b7185"/><stop offset=".5" stop-color="#3d9ab0"/><stop offset="1" stop-color="#174c5b"/>
-          </linearGradient>
-          <radialGradient id="flood"><stop stop-color="#236b7a" stop-opacity=".42"/><stop offset="1" stop-color="#124353" stop-opacity=".05"/></radialGradient>
-          <radialGradient id="hazard"><stop stop-color="#9f492f" stop-opacity=".5"/><stop offset="1" stop-color="#7d291e" stop-opacity=".04"/></radialGradient>
-        </defs>
-        <g id="mapViewport">
           <rect id="mapBase" width="3200" height="2300" fill="url(#terrain)"/>
           <rect width="3200" height="2300" fill="url(#microGrid)"/>
           <rect width="3200" height="2300" fill="url(#grid)"/>
           <g id="satelliteLayer" data-layer="satellite"></g>
           <g id="districtLayer" data-layer="districts"></g>
           <g id="terrainLayer" data-layer="terrain"></g>
-          <g id="riverLayer" data-layer="rivers"></g>
-          <g id="highwayLayer" data-layer="highways"></g>
-          <g id="roadsLayer" data-layer="roads"></g>
-          <g id="bridgeLayer" data-layer="bridges"></g>
-          <g id="hazardLayer" data-layer="hazards"></g>
-          <g id="routeLayer" data-layer="routes"></g>
-          <g id="nodesLayer" data-layer="nodes"></g>
-          <g id="vehiclesLayer" data-layer="vehicles"></g>
-          <g id="searchLayer" data-layer="search"></g>
-        </g>
-      </svg>
-
           <g id="riverLayer" data-layer="rivers"></g>
           <g id="highwayLayer" data-layer="highways"></g>
           <g id="roadsLayer" data-layer="roads"></g>
@@ -149,77 +98,6 @@
       </div>
 
       <div class="map-legend glass">
-        <span><i class="legend-village"></i>SETTLEMENT</span><span><i class="legend-hub"></i>LOGISTICS HUB</span>
-        <span><i class="legend-route"></i>ACTIVE ROUTE</span><span><i class="legend-blocked"></i>BLOCKED</span>
-      </div>
-      <div class="coordinates glass" id="coordinates">LAT 20.2860° N // LNG 85.8245° E</div>
-    </section>
-
-    <aside class="left-rail glass">
-      <button class="rail-btn active" data-mode="operations"><b>01</b><span>OPERATIONS</span></button>
-      <button class="rail-btn" data-mode="search"><b>02</b><span>SEARCH LAB</span></button>
-      <button class="rail-btn" data-mode="constraints"><b>03</b><span>CONSTRAINTS</span></button>
-      <button class="rail-btn" data-mode="scenario"><b>04</b><span>SCENARIO</span></button>
-      <button class="rail-btn" data-mode="analysis"><b>05</b><span>WHAT-IF</span></button>
-      <div class="rail-foot"><i></i><span>SYSTEM<br>STABLE</span></div>
-    </aside>
-
-    <aside class="intel-panel glass" id="intelPanel">
-      <div class="panel-head">
-        <div><small id="panelKicker">INTELLIGENCE FEED</small><h2 id="panelTitle">MISSION OVERVIEW</h2></div>
-        <button class="panel-close" id="panelClose">×</button>
-      </div>
-      <div id="panelContent"></div>
-    </aside>
-
-    <section class="right-stack">
-      <div class="priority glass">
-        <div class="section-cap"><span>AI PRIORITY SIGNAL</span><i class="pulse-dot"></i></div>
-        <strong id="priorityVillage">KALINGA EAST</strong>
-        <small id="priorityReason">High population exposure + medicine deficit</small>
-        <div class="confidence"><span><i style="width:92%"></i></span><b>92%</b></div>
-      </div>
-      <div class="alert-strip glass">
-        <div class="section-cap"><span>ALERT STREAM</span><em id="alertCount">03</em></div>
-        <div id="alertList"></div>
-      </div>
-    </section>
-
-    <section class="timeline glass">
-      <div class="timeline-head">
-        <span>MISSION EVENT STREAM</span>
-        <div class="sim-controls">
-          <button id="speedBtn">1×</button><button class="run-sim magnetic" id="runSim"><i></i> RUN RESPONSE</button>
-        </div>
-      </div>
-      <div class="timeline-track" id="timelineTrack"></div>
-    </section>
-
-    <section class="metrics glass">
-      <div><small>AFFECTED</small><b id="metricPopulation">18,470</b></div>
-      <div><small>SERVED</small><b id="metricServed">02 / 06</b></div>
-      <div><small>DELIVERED</small><b id="metricDelivered">34%</b></div>
-      <div><small>EFFICIENCY</small><b id="metricEfficiency">87.2</b></div>
-    </section>
-  </main>
-
-  <template id="academicTemplate">
-    <div class="academic-modal glass">
-      <button class="modal-close">×</button>
-      <small>ACADEMIC DEMONSTRATION MODE</small>
-      <h2>AI CONCEPTS // VIVA CONSOLE</h2>
-      <div class="co-grid">
-        <article><b>CO1</b><h3>Intelligent Agent</h3><p>Observe, analyze, decide and act through live scenario state and dispatch simulation.</p></article>
-        <article><b>CO2</b><h3>Search Algorithms</h3><p>Step-wise visualization of frontier, explored nodes, path cost and heuristic behavior.</p></article>
-        <article><b>CO3</b><h3>Constraint Satisfaction</h3><p>Capacity, fuel, stock, closures and time windows shape viable decisions.</p></article>
-        <article><b>CO4</b><h3>Decision Making</h3><p>Weighted scoring selects a priority village, route, vehicle and allocation.</p></article>
-      </div>
-      <div class="academic-detail" id="academicDetail"></div>
-    </div>
-  </template>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-</html>
         <span><i class="legend-village"></i>SETTLEMENT</span><span><i class="legend-hub"></i>LOGISTICS HUB</span>
         <span><i class="legend-route"></i>ACTIVE ROUTE</span><span><i class="legend-blocked"></i>BLOCKED</span>
       </div>
